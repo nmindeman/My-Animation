@@ -1,0 +1,258 @@
+/* parent container for grid */
+.grid {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "square eight-pointed-star skew"
+        "burst heart diamond"
+    ;
+    display: grid;
+    row-gap: 60px;
+    column-gap: 20px;
+    justify-items: center;
+    margin: 100px;
+}
+
+/* square */
+.square {
+    display: grid;
+    grid-area: square;
+    height: 50px;
+    width: 50px;
+    background-color: blue;
+    animation-duration: 3s;
+    animation-name: moveSquare;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+
+/* 8 pointed star */
+.eight-pointed-star {
+    display: grid;
+    grid-area: eight-pointed-star;
+    height: 100px;
+    width: 100px;
+}
+
+#eightVert {
+    height: 100px;
+    width: 100px;
+    background-color: chartreuse;
+    transform: rotate(45deg);
+    animation-duration: 10s;
+    animation-name: rotateWait;
+    animation-iteration-count: infinite;
+}
+
+#eightHorz {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: chartreuse;
+    animation-duration: 10s;
+    animation-name: rotateWait;
+    animation-iteration-count: infinite;
+
+}
+
+/* skew */
+.skew {
+    display: grid;
+    grid-area: skew;
+    height: 100px;
+    width: 100px;
+    background-color: brown;
+    transform: skewX(20deg);
+    border-radius: 5px 15px 5px 15px;
+    animation-duration: 6s;
+    animation-name: skew1;
+    animation-iteration-count: infinite;
+}
+
+/* burst */
+.burst {
+    display: grid;
+    grid-area: burst;
+    height: 100px;
+    width: 100px;
+    animation-duration: 3s;
+    animation-name: skew2;
+    animation-iteration-count: infinite;
+}
+
+#burst1 {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: fuchsia;
+    transform: skewX(20deg) rotate(0deg);
+}
+
+#burst2 {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: fuchsia;
+    transform: skewX(20deg) rotate(22.5deg);
+}
+
+#burst3 {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: fuchsia;
+    transform: skewX(20deg) rotate(45deg);
+}
+
+#burst4 {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    background-color: fuchsia;
+    transform: skewX(20deg) rotate(67.5deg);
+}
+
+/* heart */
+.heart {
+    grid-area: heart;
+    height: 100px;
+    width: 100px;
+}
+
+#heartLeft {
+    position: absolute;
+    margin-left: 35px;
+    height: 100px;
+    width: 60px;
+    background-color: red;
+    border-radius: 50% 45% 0px 0px;
+    transform: scale(1.2) rotate(45deg);
+    animation-duration: 10s;
+    animation-name: changeColor;
+    animation-iteration-count: infinite;
+    
+}
+
+#heartRight {
+    position: absolute;
+    margin-left: 0px;
+    height: 100px;
+    width: 60px;
+    background-color: red;
+    border-radius: 45% 50% 0px 0px;
+    transform: scale(1.2) rotate(-45deg);
+    animation-duration: 10s;
+    animation-name: changeColor;
+    animation-iteration-count: infinite;
+}
+
+/* diamond */
+.diamond {
+    grid-area: diamond;
+    height: 100px;
+    width: 100px;
+    background-color: goldenrod;
+    transform: rotate(45deg);
+    animation-duration: 2s;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    border-radius: 5px;
+}
+
+/* The animation code */
+@keyframes changeColor {
+    0% {
+        background-color: red;
+    }
+
+    25% {
+        background-color: goldenrod;
+    }
+
+    50% {
+        background-color: blue;
+    }
+
+    75% {
+        background-color: green;
+    }
+
+    100% {
+        background-color: red;
+    }
+}
+
+@keyframes rotateWait {
+    0% {
+        rotate: 0turn;
+    }
+
+    50% {
+        rotate: 1turn;
+    }
+
+    100% {
+        rotate: -1turn;
+    }
+}
+
+@keyframes spin {
+    from {
+        translate: 10 0;
+        scale: 0% 1;
+    }
+
+    50% {
+        translate: 0 0;
+        scale: 100% 1;
+    }
+
+    to {
+        translate: 10 0;
+        scale: 0% 1;
+    }
+}
+
+@keyframes moveSquare {
+    0% {
+        transform: translate(0%, 0%);
+      }
+    
+    25% {
+        transform: translate(100%, 0%);
+        rotate: 5deg;
+      }
+
+    50% {
+        transform: translate(100%, 100%);
+        rotate: 0deg;
+      }
+    
+    75% {
+        transform: translate(0%, 100%);
+        rotate: -5deg;
+      }
+
+    100% {
+        transform: translate(0%, 0%);
+      }
+}
+
+@keyframes skew1 {
+    0%, 50%, 100% 	{ 
+        transform: skew(25deg, 1deg);
+      }
+    25%, 75% 	{ 
+        transform: skew(-25deg, 20deg);
+      }
+}
+
+@keyframes skew2 {
+    0%, 50%, 100% 	{ 
+        transform: skew(-25deg, 10deg);
+      }
+    25%, 75% 	{ 
+        transform: skew(-15deg, 5deg);
+      }
+}
